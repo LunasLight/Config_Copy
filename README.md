@@ -8,4 +8,6 @@ backing up configs if you have to delete mods for any reason, all without keepin
 downloaded thus saving on disk space (It's 2026 storage is expensive)
 
 Usage: Place the script into SPTushonka Root folder and run it, the output will be under the "!Config_Copy_Output" folder
-(Technically it will work as long as it's ran in any folder that is a parent of the mods you're trying to copy from)
+(Technically it will work as long as it's ran in any folder that is a parent of the mods you're trying to copy/backup from)
+
+E.g: py .\Config_Copy.py

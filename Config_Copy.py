@@ -1,7 +1,7 @@
 """
 Config_Copy.py
 
-Version 1.2
+Version 1.3
 Author: LunasLight
 
 This script will copy all the folders, configs and presets while
@@ -18,7 +18,7 @@ find any so I decided to make this simple python script.
 Usage: Place the script into SPTushonka Root folder and run it, the output will be under the "!Config_Copy_Output" folder
 (Technically it will work as long as it's ran in any folder that is a parent of the mods you're trying to copy/backup from)
 
-E.g: py .\Config_Copy_Testing.py
+E.g: py .\Config_Copy.py
 """
 
 # import os
