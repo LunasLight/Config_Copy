@@ -1,19 +1,24 @@
 """
-ConfigCopy.py
+Config_Copy.py
 
 Version 1.2
 Author: LunasLight
 
 This script will copy all the folders, configs and presets while
 retaining folder structure into a new directory with only
-the configs and presets for SPTushonka mods
+said configs and presets for SPTushonka mods
 
 Reasons this exists: Sending configs to a friend, updating SPT while retaining configs,
 backing up configs if you have to delete mods for any reason, all without keeping the mod
-downloaded thus saving on disk space (It's 2026 storage is expensive)
+downloaded thus saving on disk space (It's 2026 storage is expensive).
 
-Usage: Place the script into SPTushonka Root folder and run it, the output will be under the "!Script_Output" folder
-(Technically it will work as long as it's ran in any folder that is a parent of the mods you're trying to copy from)
+I Briefly looked around for this specific functionality in other mod managers and I didn't
+find any so I decided to make this simple python script.
+
+Usage: Place the script into SPTushonka Root folder and run it, the output will be under the "!Config_Copy_Output" folder
+(Technically it will work as long as it's ran in any folder that is a parent of the mods you're trying to copy/backup from)
+
+E.g: py .\Config_Copy_Testing.py
 """
 
 # import os
@@ -33,9 +38,7 @@ def main():
     directory_create()
     configs_copied = file_copy("Config", CONFIG_REGEX)
     presets_copied = file_copy("Preset", PRESET_REGEX)
-    print(
-        f"Copied a total of '{configs_copied}' configs and '{presets_copied}' presets"
-    )
+    print(f"Copied a total of {configs_copied} configs and {presets_copied} presets")
 
 
 def file_copy(filetype, regex):
