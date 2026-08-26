@@ -2,8 +2,6 @@
 
 # THIS IS NOT A MOD. THIS IS A PYTHON SCRIPT FOR UTILITY PURPOSES
 
-If this is not allowed I apologize.
-
 This will quickly copy all the config and preset .json/jsonc files into 1 directory for you to do with as you please.
 
 I made this because a friend wanted to get my configs for the fika server we were playing on. I uploaded it here because if I had a use case for it maybe someone else will too.
