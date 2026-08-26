@@ -1,7 +1,7 @@
 """
 Config_Copy.py
 
-Version 1.3
+Version 1.3.1
 Author: LunasLight
 
 This script will copy all the folders, configs and presets while
@@ -16,37 +16,27 @@ E.g: py .\Config_Copy.py
 
 # import os
 import shutil
-import glob
 from pathlib import Path
+from time import perf_counter_ns
 
 # file_path = Path(__file__).resolve()
 DIR_PATH = Path.cwd()
 OUT_DIR = Path(DIR_PATH / "!Config_Copy_Output")
-CONFIG_REGEX = "/**/*[C]onfig*.json*"
-PRESET_REGEX = "/**/*[P]reset*/*.json*"
+CONFIG_REGEX = "*Config*.json*"
+PRESET_REGEX = "*Preset*/*.json*"
 
 
 def main():
     """Main Function"""
     directory_create()
+    start = perf_counter_ns()
     configs_copied = file_copy("Config", CONFIG_REGEX)
     presets_copied = file_copy("Preset", PRESET_REGEX)
-    print(f"Copied a total of {configs_copied} configs and {presets_copied} presets")
-
-
-def file_copy(filetype, regex):
-    """Copies the regex matched files (.json*)"""
-    files_copied = 0
-    for file in glob.iglob(str(DIR_PATH) + regex, recursive=True):
-        mods_location = Path(file).parts.index(DIR_PATH.parts[-1])
-        cleaned_list = Path(file).parts[mods_location + 1 : -1]
-        final_dir = Path(OUT_DIR / Path(*cleaned_list))
-        final_dir.mkdir(parents=True, exist_ok=True)
-        shutil.copy(file, final_dir)
-        files_copied += 1
-        print(f"{filetype} Copied: {file}")
-
-    return files_copied
+    stop = perf_counter_ns()
+    print(
+        f"\nCopied a total of {configs_copied} configs and {presets_copied} presets in"
+        f" {(stop - start) / 1e6:.1f} ms or {(stop - start) / 1e9:.3f} seconds"
+    )
 
 
 def directory_create():
@@ -56,6 +46,20 @@ def directory_create():
     else:
         shutil.rmtree(OUT_DIR)
         OUT_DIR.mkdir(parents=False, exist_ok=False)
+
+
+def file_copy(filetype, regex):
+    """Copies the regex matched files (.json*) with path.rglob"""
+    files_copied = 0
+    location = DIR_PATH.parts.index(DIR_PATH.parts[-1])
+    for file in DIR_PATH.rglob(regex, case_sensitive=False):
+        if "!Config_Copy_Output" not in file.parts:
+            file_out_dir = OUT_DIR / Path(*file.parts[location + 1 : -1])
+            file_out_dir.mkdir(parents=True, exist_ok=True)
+            shutil.copy(file, file_out_dir)
+            files_copied += 1
+            print(f"{filetype} Copied: {file}")
+    return files_copied
 
 
 if __name__ == "__main__":

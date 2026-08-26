@@ -1,8 +1,12 @@
-# THIS IS NOT A MOD. THIS IS A PYTHON SCRIPT FOR UTILITY PURPOSES
+# THIS IS NOT A MOD. THIS IS A PYTHON SCRIPT
 
-## This will quickly copy all the config and preset .json/.jsonc files into 1 directory for you to do with as you please while retaining folder structure as it is on your drive
+### Overview
 
-### Reasons this exists: 
+## This should work on ANY SPT version that uses config files and presets, I know it says 4.1.3 but that's cause I don't know how to list it for all of them.
+
+## This will quickly copy all the config and preset .json/.jsonc files into 1 directory for you to do with as you please while retaining folder structure as it is on your drive.
+
+### Reasons this exists
 
 * Sending configs to someone without having to dig through a bajillion different folders and paths
 * Updating SPT while retaining custom/tweaked configs 
@@ -15,7 +19,7 @@ I Briefly looked around for this specific functionality with different mod manag
 ## Prerequisites
 A decently up to date python install and basic command line usage (or just follow along with the video at the bottom)
 
-## Usage: 
+## Usage 
 Place the script into the SPTushonka Root folder and run it, the output will be under the directory:  
 `/!Config_Copy_Output`  
 
@@ -34,3 +38,6 @@ Here is a step by step video on how to use on my working SPT 4.1.3.
 Probably want to open the full video, the resolution is small in the auto-embed
 
 https://youtu.be/phP0_Xx96XE
+
+## VirusTotal Results
+https://www.virustotal.com/gui/file/249da22883f9ff05d716bd06c24e66c28ed773dc089efe4d456935a7d1401749/detection
