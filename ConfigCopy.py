@@ -1,6 +1,9 @@
 """
 ConfigCopy.py
 
+Version 1.1
+Author: Lunas_Light
+
 This script will copy all the folders, configs and presets while
 retaining folder structure into a new directory with only
 the configs and presets for SPTushonka mods
@@ -27,12 +30,20 @@ r_path = r"^.*?" + str(dir_path)
 out_path = dir_path / "!Script_Output"
 folders_created = 0
 configs_found = 0
+presets_found = 0
 directories_checked = 0
 
 
 def main():
     directory_create()
-    print("Copied a total of " + str(directory_copy()) + " configs")
+    directory_copy()
+    print(
+        "Copied a total of "
+        + str(configs_found)
+        + " configs and "
+        + str(presets_found)
+        + " presets"
+    )
     # print(Path.cwd())
     """print(
         "The current file path is: "
@@ -46,10 +57,11 @@ def main():
 def directory_copy():
     # global directories_checked
     global configs_found
+    global presets_found
     # for path in Path.cwd().iterdir():
     # directories_checked += 1
     # print("TEST" + str(dir_path))
-    for config in glob.iglob(str(dir_path) + "/**/*config*.json*", recursive=True):
+    for config in glob.iglob(str(dir_path) + "/**/*[C]onfig*.json*", recursive=True):
         # os.mkdir("!Script_Output" / path)
         configs_found += 1
         mods_location = Path(config).parts.index(dir_path.parts[-1])
@@ -80,9 +92,41 @@ def directory_copy():
         #  print(str(subfolders))
         # shutil.copyfile(config, out_path / "aaa/")
         # shutil.copytree(config, out_path)
-        print("Copied: " + str(config))
-    # for preset in glob.iglob(str(dir_path) + "/*preset*/*", recursive=True): print(str(preset))
-    return configs_found
+        print("Config Copied: " + str(config))
+        # for preset in glob.iglob(str(dir_path) + "/[P]resets", recursive=True):
+    # for preset in Path(".").rglob("*preset*"):
+    # if not os.path.basename(preset).startswith("!"):
+    """
+    for preset in glob.iglob(str(dir_path) + "/**/*[P]reset*/**", recursive=True):
+        presets_found += 1
+        preset_location = Path(preset).parts.index(dir_path.parts[-1])
+        preset_folder = Path(preset)
+        cleaned_list = Path(preset).parts[preset_location + 1 : -1]
+        # print(cleaned_list)
+        final_path = out_path / Path(*cleaned_list)
+        # final_path = out_path / Path(*preset)
+        print("Path preset is: " + str(Path(preset)))
+        print("Final path is: " + str(final_path))
+        os.makedirs(final_path, exist_ok=True)
+        # test1 = Path(preset).parts[preset_location + 1 : -1]
+        # test2 = Path(test1)
+        # shutil.copy(preset, final_path)
+        shutil.copytree(preset_folder, final_path, dirs_exist_ok=True)
+        # shutil.copy(Path(preset), final_path)  # , dirs_exist_ok=True)
+        # print(final_path)"""
+    for preset in glob.iglob(str(dir_path) + "/**/*[P]reset*/*.json*", recursive=True):
+        presets_found += 1
+        # os.mkdir("!Script_Output" / path)
+        # configs_found += 1
+        mods_location = Path(preset).parts.index(dir_path.parts[-1])
+        cleaned_list = Path(preset).parts[mods_location + 1 : -1]
+        # print(cleaned_list)
+        final_path = out_path / Path(*cleaned_list)
+        # final_path = out_path + Path(cleaned_list)
+        # print(final_path)
+        os.makedirs(final_path, exist_ok=True)
+        shutil.copy(preset, final_path)
+        print("Preset Copied: " + str(dir_path / Path(preset)))
 
 
 def directory_create():
