@@ -1,8 +1,8 @@
 """
 ConfigCopy.py
 
-Version 1.1
-Author: Lunas_Light
+Version 1.1.1
+Author: LunasLight
 
 This script will copy all the folders, configs and presets while
 retaining folder structure into a new directory with only
@@ -14,6 +14,8 @@ downloaded thus saving on disk space (It's 2026 storage is expensive)
 
 Usage: Place the script into SPT_Runtime/user/mods (SPT/user/mods for other versions)
 and run it, the output will be under the "!Script_Output" folder
+
+TODO: Maybe have the person run it from the root folder
 """
 
 import os
@@ -28,10 +30,10 @@ file_path = Path(__file__).resolve()
 dir_path = Path.cwd()
 r_path = r"^.*?" + str(dir_path)
 out_path = dir_path / "!Script_Output"
-folders_created = 0
-configs_found = 0
-presets_found = 0
-directories_checked = 0
+FOLDERS_CREATED = 0
+CONFIGS_FOUND = 0
+PRESETS_FOUND = 0
+DIRECTORIES_CHECKED = 0
 
 
 def main():
@@ -39,9 +41,9 @@ def main():
     directory_copy()
     print(
         "Copied a total of "
-        + str(configs_found)
+        + str(CONFIGS_FOUND)
         + " configs and "
-        + str(presets_found)
+        + str(PRESETS_FOUND)
         + " presets"
     )
     # print(Path.cwd())
@@ -55,15 +57,15 @@ def main():
 
 
 def directory_copy():
-    # global directories_checked
-    global configs_found
-    global presets_found
+    # global DIRECTORIES_CHECKED
+    global CONFIGS_FOUND
+    global PRESETS_FOUND
     # for path in Path.cwd().iterdir():
-    # directories_checked += 1
+    # DIRECTORIES_CHECKED += 1
     # print("TEST" + str(dir_path))
     for config in glob.iglob(str(dir_path) + "/**/*[C]onfig*.json*", recursive=True):
         # os.mkdir("!Script_Output" / path)
-        configs_found += 1
+        CONFIGS_FOUND += 1
         mods_location = Path(config).parts.index(dir_path.parts[-1])
         cleaned_list = Path(config).parts[mods_location + 1 : -1]
         # print(cleaned_list)
@@ -115,9 +117,9 @@ def directory_copy():
         # shutil.copy(Path(preset), final_path)  # , dirs_exist_ok=True)
         # print(final_path)"""
     for preset in glob.iglob(str(dir_path) + "/**/*[P]reset*/*.json*", recursive=True):
-        presets_found += 1
+        PRESETS_FOUND += 1
         # os.mkdir("!Script_Output" / path)
-        # configs_found += 1
+        # CONFIGS_FOUND += 1
         mods_location = Path(preset).parts.index(dir_path.parts[-1])
         cleaned_list = Path(preset).parts[mods_location + 1 : -1]
         # print(cleaned_list)
