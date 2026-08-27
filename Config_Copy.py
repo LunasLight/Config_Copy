@@ -1,7 +1,7 @@
 """
 Config_Copy.py
 
-Version 1.3.1
+Version 1.3.2
 Author: LunasLight
 
 This script will copy all the folders, configs and presets while
@@ -11,15 +11,13 @@ said configs and presets for SPTushonka mods
 Usage: Place the script into SPTushonka Root folder and run it, the output will be under the "!Config_Copy_Output" folder
 (Technically it will work as long as it's ran in any folder that is a parent of the mods you're trying to copy/backup from)
 
-E.g: py .\Config_Copy.py
+E.g: py .\\Config_Copy.py
 """
 
-# import os
 import shutil
 from pathlib import Path
 from time import perf_counter_ns
 
-# file_path = Path(__file__).resolve()
 DIR_PATH = Path.cwd()
 OUT_DIR = Path(DIR_PATH / "!Config_Copy_Output")
 CONFIG_REGEX = "*Config*.json*"
@@ -53,7 +51,8 @@ def file_copy(filetype, regex):
     files_copied = 0
     location = DIR_PATH.parts.index(DIR_PATH.parts[-1])
     for file in DIR_PATH.rglob(regex, case_sensitive=False):
-        if "!Config_Copy_Output" not in file.parts:
+        # If the file path contains any exclamation point at the start of any directory it's skipped
+        if not file.full_match("**/!*/**"):
             file_out_dir = OUT_DIR / Path(*file.parts[location + 1 : -1])
             file_out_dir.mkdir(parents=True, exist_ok=True)
             shutil.copy(file, file_out_dir)

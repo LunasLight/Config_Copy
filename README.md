@@ -6,6 +6,14 @@
 
 ## This will quickly copy all the config and preset .json/.jsonc files into 1 directory for you to do with as you please while retaining folder structure as it is on your drive.
 
+Just as a note this script deletes and remakes the output folder every time it is ran so if you plan on making changes to your SPT mods and running it again, it will delete the old BACKUP configs. From my testing it does go to the recycle bin though so it's not unrecoverable.   
+
+(I'd recommend making a manual date on the backup folder if you want to keep the backups before running the script again, it does not include any directory that starts with an exclamation point.)   
+
+It does still find the mods.disabled folder from some mod managers so if you don't FULLY delete the mod but just disable it you won't risk losing BACKUP configs. 
+
+_*This script should never ever delete any configs that aren't made from this script.*_
+
 ### Reasons this exists
 
 * Sending configs to someone without having to dig through a bajillion different folders and paths
@@ -28,7 +36,7 @@ This should work on ANY SPT version that uses config files and presets, I know i
 ### Step by Step Example
 1. Move "Config_Copy.py" into your SPT root directory and open command prompt in the address bar at the top by typing `cmd`  
 2. Copy Paste or type the below snippet into your command prompt (Ctrl + Shift + V sometimes)
-`py .\Config_Copy.py` Yes it is case sensitive
+`py .\\Config_Copy.py` Yes it is case sensitive
 3. Profit? The newly created `/!Config_Copy_Output`  folder will have all your configs and presets  
 
 (Technically it will work as long as it's ran in any folder that is a parent of the mods you're trying to copy/backup from including `/user/mods/`)
