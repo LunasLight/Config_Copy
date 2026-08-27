@@ -3,6 +3,7 @@ Config_Copy.py
 
 Version 1.3.2
 Author: LunasLight
+Website: https://github.com/LunasLight/Config_Copy
 
 This script will copy all the folders, configs and presets while
 retaining folder structure into a new directory with only
