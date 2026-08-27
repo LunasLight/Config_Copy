@@ -1,6 +1,6 @@
 # THIS IS NOT A MOD. THIS IS A PYTHON SCRIPT
 
-## This should work on ANY SPT version that uses config and preset .json/.jsonc files
+## This should work on ANY SPT version that uses .json/.jsonc config files and presets
 
 ### Overview
 This will quickly copy all the config and preset .json/.jsonc files into 1 directory for you to do with as you please while retaining folder structure as it is on your drive.
