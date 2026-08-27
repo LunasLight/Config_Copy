@@ -1,12 +1,12 @@
 # THIS IS NOT A MOD. THIS IS A PYTHON SCRIPT
 
+## This should work on ANY SPT version that uses config and preset .json/.jsonc files
+
 ### Overview
+This will quickly copy all the config and preset .json/.jsonc files into 1 directory for you to do with as you please while retaining folder structure as it is on your drive.
 
-## This should work on ANY SPT version that uses config files and presets, I know it says 4.1.3 but that's cause I don't know how to list it for all of them.
-
-## This will quickly copy all the config and preset .json/.jsonc files into 1 directory for you to do with as you please while retaining folder structure as it is on your drive.
-
-Just as a note this script deletes and remakes the output folder every time it is ran so if you plan on making changes to your SPT mods and running it again, it will delete the old BACKUP configs. From my testing it does go to the recycle bin though so it's not unrecoverable.   
+## Notes
+This script deletes and remakes the output folder every time it is ran so if you plan on making changes to your SPT mods and running it again, it will delete the old BACKUP configs. From my testing it does go to the recycle bin though so it's not unrecoverable.   
 
 (I'd recommend making a manual date on the backup folder if you want to keep the backups before running the script again, it does not include any directory that starts with an exclamation point.)   
 
@@ -34,7 +34,7 @@ Place the script into the SPTushonka Root folder and run it, the output will be 
 This should work on ANY SPT version that uses config files and presets, I know it says 4.1.3 but that's cause I don't know how to list it for all of them.
 
 ### Step by Step Example
-1. Move "Config_Copy.py" into your SPT root directory and open command prompt in the address bar at the top by typing `cmd`  
+1. Move `Config_Copy.py` into your SPT root directory and open command prompt in the address bar at the top by typing `cmd`  
 2. Copy Paste or type the below snippet into your command prompt (Ctrl + Shift + V sometimes)
 `py .\\Config_Copy.py` Yes it is case sensitive
 3. Profit? The newly created `/!Config_Copy_Output`  folder will have all your configs and presets  
@@ -48,4 +48,4 @@ Probably want to open the full video, the resolution is small in the auto-embed
 https://youtu.be/phP0_Xx96XE
 
 ## VirusTotal Results
-https://www.virustotal.com/gui/file/249da22883f9ff05d716bd06c24e66c28ed773dc089efe4d456935a7d1401749/detection
+https://www.virustotal.com/gui/file/87affca4198efb16ccae07144ff4fd9764af5e72a898d83cbcb11e93e0374d9b/detection
